@@ -1,13 +1,17 @@
 <?php
 $str   = "Tôi tên là Lộc. Vợ tôi tên là Ngân.";
 $str   = cleanString($str);
+$str   = strtolower($str);
 $array = array_filter(explode(".", $str));
-//print_r($array);
-$results = array();
-foreach($array as $item) {
-	//	$newitem[] = addcslashes($item, 'a..zA..Z');
-	preg_match_all('/./u', $str, $results);
+foreach ($array as $sentence) {
+	$words[] = array_filter(explode(' ', $sentence));
+	foreach ($words as $word){
+		$finalArray[] = preg_match_all('/./u', $word, $finalArray);
+	}
 }
+echo '<pre>';
+print_r(array_filter($words));
+die;
 function cleanString($text) {
 	// 1) convert á ô => a o
 	$text = preg_replace("/[áàâãªäậấẫầặắẵằ]/u", "a", $text);
@@ -15,11 +19,13 @@ function cleanString($text) {
 	$text = preg_replace("/[ÍÌÎÏĨỊỈ]/u", "I", $text);
 	$text = preg_replace("/[íìîïĩịỉ]/u", "i", $text);
 	$text = preg_replace("/[éèêëẹẽẻếềệễể]/u", "e", $text);
-	$text = preg_replace("/[ÉÈÊËẸẼẺ]/u", "E", $text);
-	$text = preg_replace("/[óòôõºöộ]/u", "o", $text);
-	$text = preg_replace("/[ÓÒÔÕÖ]/u", "O", $text);
-	$text = preg_replace("/[úùûü]/u", "u", $text);
-	$text = preg_replace("/[ÚÙÛÜ]/u", "U", $text);
+	$text = preg_replace("/[ÉÈÊËẸẼẺẾỀỆỄỂ]/u", "E", $text);
+	$text = preg_replace("/[óòôõºöộọỏốồỗổơờớỡởợ]/u", "o", $text);
+	$text = preg_replace("/[ÓÒÔÕÖỌỎỐỒỘỔỖƠỜỚỢỞỠ]/u", "O", $text);
+	$text = preg_replace("/[úùûüũủụưứừữửự]/u", "u", $text);
+	$text = preg_replace("/[Đ]/u", "D", $text);
+	$text = preg_replace("/[đ]/u", "đ", $text);
+	$text = preg_replace("/[ÚÙÛÜŨỦỤƯỮỰỬỨỪ]/u", "U", $text);
 	$text = preg_replace("/[’‘‹›‚]/u", "'", $text);
 	$text = preg_replace("/[“”«»„]/u", '"', $text);
 	$text = str_replace("–", "-", $text);
@@ -31,5 +37,3 @@ function cleanString($text) {
 	return $text;
 }
 
-print_r(($results));
-?>
