@@ -11,11 +11,11 @@ foreach($array as $item) {
 function cleanString($text) {
 	// 1) convert á ô => a o
 	$text = preg_replace("/[áàâãªäậấẫầặắẵằ]/u", "a", $text);
-	$text = preg_replace("/[ÁÀÂÃÄẬẤẪẦẶẮẴẰ]/u", "A", $text);
-	$text = preg_replace("/[ÍÌÎÏ]/u", "I", $text);
-	$text = preg_replace("/[íìîï]/u", "i", $text);
-	$text = preg_replace("/[éèêë]/u", "e", $text);
-	$text = preg_replace("/[ÉÈÊË]/u", "E", $text);
+	$text = preg_replace("/[ÁÀÂÃÄẬẤẪẦẶẮẴẰẲẨ]/u", "A", $text);
+	$text = preg_replace("/[ÍÌÎÏĨỊỈ]/u", "I", $text);
+	$text = preg_replace("/[íìîïĩịỉ]/u", "i", $text);
+	$text = preg_replace("/[éèêëẹẽẻếềệễể]/u", "e", $text);
+	$text = preg_replace("/[ÉÈÊËẸẼẺ]/u", "E", $text);
 	$text = preg_replace("/[óòôõºöộ]/u", "o", $text);
 	$text = preg_replace("/[ÓÒÔÕÖ]/u", "O", $text);
 	$text = preg_replace("/[úùûü]/u", "u", $text);
