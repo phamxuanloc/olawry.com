@@ -1,17 +1,19 @@
 <?php
-$str   = "Tôi tên là Lộc. Vợ tôi tên là Ngân.";
-$str   = cleanString($str);
-$str   = strtolower($str);
+$str = "Tôi tên là Lộc. Vợ tôi tên là Ngân.";
+$str = cleanString($str);
+$str = strtolower($str);
+//Delete all null element.
 $array = array_filter(explode(".", $str));
-foreach ($array as $sentence) {
-	$words[] = array_filter(explode(' ', $sentence));
-	foreach ($words as $word){
-		$finalArray[] = preg_match_all('/./u', $word, $finalArray);
+foreach ($array as $words) {
+	$words = array_filter(explode(' ', $words));
+	foreach ($words as $word) {
+		preg_match_all('/./u', $word, $results);
+		$finalArray[] = $results;
 	}
+	//		preg_match_all('/./u', $str, $results);
 }
 echo '<pre>';
-print_r(array_filter($words));
-die;
+print_r($finalArray);
 function cleanString($text) {
 	// 1) convert á ô => a o
 	$text = preg_replace("/[áàâãªäậấẫầặắẵằ]/u", "a", $text);
