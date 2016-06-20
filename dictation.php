@@ -1,5 +1,5 @@
 <?php
-$str = "Tôi tên là Lộc. Vợ tôi tên là Ngân.";
+$str = "I'm a stupid student. But I will do everything to fix it";
 $str = cleanString($str);
 $str = strtolower($str);
 //Delete all null element.
@@ -13,7 +13,10 @@ foreach ($array as $words) {
 	//		preg_match_all('/./u', $str, $results);
 }
 echo '<pre>';
-print_r($finalArray);
+//print_r($finalArray);
+print_r( $a=json_encode($finalArray,JSON_FORCE_OBJECT));
+
+
 function cleanString($text) {
 	// 1) convert á ô => a o
 	$text = preg_replace("/[áàâãªäậấẫầặắẵằ]/u", "a", $text);
@@ -36,6 +39,10 @@ function cleanString($text) {
 	$text = str_replace("Ç", "C", $text);
 	$text = str_replace("ñ", "n", $text);
 	$text = str_replace("Ñ", "N", $text);
+	$text = preg_replace("/[^A-Za-z0-9 ]/", '', $text);
 	return $text;
 }
+?>
+<script>
 
+</script>
