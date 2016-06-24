@@ -14,13 +14,11 @@ foreach ($array as $words) {
 }
 echo '<pre>';
 //print_r($finalArray);
-print_r( $a=json_encode($finalArray,JSON_FORCE_OBJECT));
-
-
+print_r($a = json_encode($finalArray, JSON_FORCE_OBJECT));
 function cleanString($text) {
 	// 1) convert á ô => a o
-	$text = preg_replace("/[áàâãªäậấẫầặắẵằ]/u", "a", $text);
-	$text = preg_replace("/[ÁÀÂÃÄẬẤẪẦẶẮẴẰẲẨ]/u", "A", $text);
+	$text = preg_replace("/[áàạảâãªäậấẫầặắẵằ]/u", "a", $text);
+	$text = preg_replace("/[ÁÀẠẢÂÃÄẬẤẪẦẶẮẴẰẲẨ]/u", "A", $text);
 	$text = preg_replace("/[ÍÌÎÏĨỊỈ]/u", "I", $text);
 	$text = preg_replace("/[íìîïĩịỉ]/u", "i", $text);
 	$text = preg_replace("/[éèêëẹẽẻếềệễể]/u", "e", $text);
@@ -42,6 +40,7 @@ function cleanString($text) {
 	$text = preg_replace("/[^A-Za-z0-9 ]/", '', $text);
 	return $text;
 }
+
 ?>
 <script>
 
